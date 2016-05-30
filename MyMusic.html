@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body{ text-align: center; }
+*{margin:0;padding:0;}
+ul{list-style: none;text-align:center;margin:100px auto; width:200px; border:2px solid orange;}
+li{width:200px; height:30px; line-height:30px; border-bottom:1px solid aqua;color:#c09;}
+li.active i{font-style: normal; float:right;margin-right: 10px;color:#ccc;}
+li.active em{border:6px solid transparent;border-left: 6px solid orange;float:right;margin:10px 10px 0 0;}
+li.active span{margin-left: 10px;}
+</style>
+<script>
+window.onload = function(){
+	var oA = document.querySelector('#a1');
+	var aEm = document.querySelectorAll('li em');
+	var aI = document.querySelectorAll('li i');
+	var iNow = 0;
+	var iCount = 0;
+	var aMp3 = ['千千阙歌','时间都去哪儿了','小苹果','夜的钢琴曲','雨的印记'];
+
+	for(var i = 0;i<aEm.length;i++){
+		
+		(function(index){
+			aEm[i].onclick  = function(){
+				iNow = index;
+				for(var i=0;i<aEm.length;i++){
+					aEm[i].className='';
+				}
+				aEm[iNow].className='active';
+				oA.src = 'mp3/'+aMp3[iNow]+'.mp3';
+				oA.play();
+				oA.muted = false;
+			};
+		})(i);
+	}
+
+	for(var i = 0;i<aI.length;i++){
+		(function(index){
+			aI[i].onclick  = function(){
+				iCount = index;
+				for(var i=0;i<aI.length;i++){
+					aI[i].className='';
+				}
+				aI[iNow].className = 'active';
+				oA.src = 'mp3/'+aMp3[iNow]+'.mp3';
+				oA.play();
+				oA.muted = true;
+			};
+		})(i);
+	}
+};
+</script>
+</head>
+
+<body>
+<audio id="a1" src="mp3/千千阙歌.mp3" autoplay></audio>
+<ul>
+	<li class="active"><span>01</span> 千千阙歌 <em class="emc"></em><i class="ic">||</i></li>
+	<li class="active"><span>02</span> 时间都去哪儿了 <em class="emc"></em><i class="ic">||</i></li>
+	<li class="active"><span>03</span> 小苹果 <em class="emc"></em><i class="ic">||</i></li>
+	<li class="active"><span>04</span> 夜的钢琴曲 <em class="emc"></em><i class="ic">||</i></li>
+	<li class="active"><span>05</span> 雨的印记 <em class="emc"></em><i class="ic">||</i></li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
